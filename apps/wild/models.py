@@ -58,7 +58,7 @@ class User(models.Model):
     password = models.CharField(max_length=200)
     life_style = models.CharField(max_length = 200)
     cost = models.CharField(max_length = 200, null = True, blank = True)
-    reting = models.CharField(max_length = 100, null = True, blank = True)
+    rating = models.CharField(max_length = 100, null = True, blank = True)
     popularity = models.CharField(max_length = 200, null = True, blank= True)
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
