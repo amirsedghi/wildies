@@ -3,22 +3,78 @@
   <head>
     <meta charset="utf-8">
     <title>Main</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    {% load staticfiles %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src='{% static 'wild/js/preferences.js' %}'></script>
+    <style media="screen">
+      body{
+        margin: auto;
+        width: 1000px;
+      }
+
+      a{
+        color: #1de9b6;
+      }
+
+      a:hover{
+        color:orange;
+      }
+      button:hover{
+        color: orange;
+      }
+
+      .wrapper{
+        margin: auto;
+        width: 700px;
+        height: 1000px;
+        border: 1px solid black;
+      }
+
+      .content{
+        margin: auto;
+        width: 700px;
+        height: 700px;
+
+      }
+
+      .choice{
+        margin: auto;
+        width: 126px;
+      }
+
+      li{
+        display: inline-block;
+      }
+    </style>
   </head>
   <body>
-    <form class="" action="/main" method="post">
-      <input type="hidden" name="life_style" value="{{user.life_style}}">
-      <input type="hidden" name="i_am" value="{{user.i_am}}">
-      <input type="hidden" name="rating" value="{{user.rating}}">
-      <input type="hidden" name="popularity" value="{{user.popularity}}">
-      <input type="text" name="city" value="" placeholder="City">
-      <input type="submit" value="fuck it">
-    </form>
-    <div class="content">
-
-    </div>
-    <div class="choice">
-      <h3>no</h3>
-      <h3>yes</h3>
-    </div>
+    <div class="wrapper">
+      <div class="content">
+        <form class="" action="/main" method="post">
+      {% csrf_token %}
+          <input type="hidden" name="life_style" value="{{user.life_style}}">
+          <input type="hidden" name="i_am" value="{{user.i_am}}">
+          <input type="hidden" name="rating" value="{{user.rating}}">
+          <input type="hidden" name="popularity" value="{{user.popularity}}">
+          <input type="text" name="city" value="" placeholder="City">
+          <button class="waves-effect waves-light btn teal accent-3" type="submit">Fuck It</button>
+        </form>
+        <ul>
+          <li><a href="#"><i class="material-icons">settings</i></a></li>
+          <li><a href="#"><i class="material-icons">account_circle</i></a></li>
+          <li><a href='#' class="waves-effect waves-light btn teal accent-3" type="submit">Your List</a></li>
+      </ul>
+      </div>
+      <div class="choice">
+        <a href="#"><i class="medium material-icons">highlight_off</i></a>
+        <a href="#"><i class="medium material-icons">check_circle</i></a>
+      </div>
   </body>
+</div>
 </html>
