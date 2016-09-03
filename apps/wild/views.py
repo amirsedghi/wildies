@@ -46,5 +46,5 @@ def main(request):
     else:
         return redirect('/loginreg')
 
-def preferences(request):
+def preferences(request, id):
     return render(request, 'wild/preferences.html')
