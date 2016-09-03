@@ -39,7 +39,7 @@
       Email: <input type="text" name="email" value="">
       Password: <input type="password" name="pass" value="">
       Confirm pw: <input type="password" name="conf_pass" value="">
-      <a class="waves-effect waves-light btn teal accent-3"type="submit" name="Submit" value="Register">Register</a>
+      <button class="waves-effect waves-light btn teal accent-3"type="submit" name="Submit" value="Register">Register</button>
     </form>
     <b>
     {% for message in messages %}
@@ -50,7 +50,7 @@
       {% csrf_token %}
         Email: <input type="text" name="loginemail" value="">
         Password: <input type="password" name="loginpass" value="">
-        <a class="waves-effect waves-light btn teal accent-3"type="submit" name="Submit" value="Login">Login</a>
+        <button class="waves-effect waves-light btn teal accent-3"type="submit" name="Submit" value="Login">Login</button>
     </form>
   </body>
 </html>
