@@ -3,8 +3,23 @@ from .models import User, UserPlace
 import bcrypt
 from django.contrib import messages
 from datetime import datetime
+from yelp.client import Client
+from yelp.oauth1_authenticator import Oauth1Authenticator
+from django.http import JsonResponse
+import json
 
 # Create your views here.
+auth = Oauth1Authenticator(
+    consumer_key='QALWzkvikT2OdQXpp5u0BQ',
+    consumer_secret='N96o0rgo_cAKkI2xVUX9DOTgs9A',
+    token='M-0HG4VGCuLTTU-Yrz7IxZJDggdZ8wNX',
+    token_secret='5XrSq-6WFQiYclv3K1mCBlVcHRw'
+)
+
+client = Client(auth)
+
+
+
 def index(request):
     return render(request, 'wild/index.html')
 
@@ -41,10 +56,32 @@ def loginreg(request):
 def main(request):
     the_user = User.objects.get(id = request.session['id'])
     if the_user:
+
         context = {'user': the_user}
         return render(request, 'wild/main.html', context)
     else:
         return redirect('/loginreg')
+
+def results(request,num):
+    params = {
+        'term': 'food',
+        'category_filter': 'vegan',
+    }
+    response = client.search(request.POST['city'], **params)
+    print '**************'
+    for i in range(0, 20):
+        print response.businesses[i].name
+    print len(response.businesses)
+    if int(num)==20:
+        num=0
+    context = {
+        'response':response.businesses[int(num)],
+        'num': int(num)+1,
+        'city':request.POST['city'],
+    }
+    # result = JsonResponse(response, safe=False)
+    return render(request,'wild/app.html', context)
+
 
 def preferences(request, id):
     return render(request, 'wild/preferences.html')

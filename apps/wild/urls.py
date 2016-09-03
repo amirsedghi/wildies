@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^main$', views.main),
     url(r'^wildrecord$', views.wildrecord),
     url(r'^record$', views.record),
+    url(r'^getresults/(?P<num>\d+)$', views.results),
 ]

@@ -3,9 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title>Main</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/bettiolo/oauth-signature-js/master/dist/oauth-signature.min.js"></script>
+    {% load staticfiles %}
+    <script type="text/javascript" src='{% static 'wild/js/main.js' %}'></script>
   </head>
   <body>
-    <form class="" action="/main" method="post">
+    <form class="" action="/getresults/0" method="post">
+      {%csrf_token%}
       <input type="hidden" name="life_style" value="{{user.life_style}}">
       <input type="hidden" name="i_am" value="{{user.i_am}}">
       <input type="hidden" name="rating" value="{{user.rating}}">
@@ -13,12 +19,6 @@
       <input type="text" name="city" value="" placeholder="City">
       <input type="submit" value="fuck it">
     </form>
-    <div class="content">
 
-    </div>
-    <div class="choice">
-      <h3>no</h3>
-      <h3>yes</h3>
-    </div>
   </body>
 </html>

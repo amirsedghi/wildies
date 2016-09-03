@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="app">
+      <div class="content">
+        {{response.name}}
+        <img src="{{response.image_url}}" alt="" />
+        <img src="{{response.rating_img_url}}" alt="" />
+      </div>
+      <div class="choice">
+        <form class="" action="/getresults/{{num}}" method="post">
+          {%csrf_token%}
+          <input type="hidden" name="city" value="{{city}}">
+          <button type="submit" name="button">No</button>
+        </form>
+        <h3>yes</h3>
+      </div>
+    </div>
+  </body>
+</html>
