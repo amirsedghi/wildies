@@ -48,3 +48,11 @@ def main(request):
 
 def preferences(request, id):
     return render(request, 'wild/preferences.html')
+
+def record(request):
+    the_user = User.objects.filter(id = request.session['id']).update(life_style = request.POST['life_style'], i_am = request.POST['alcohol'], rating = request.POST['rating'], popularity = request.POST['popularity'])
+    return redirect('/main')
+
+def wildrecord(request):
+    the_user = User.objects.filter(id = request.session['id']).update(life_style = request.POST['life_style'], i_am = request.POST['alcohol'])
+    return redirect('/main')
