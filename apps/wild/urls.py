@@ -8,4 +8,6 @@ urlpatterns = [
     url(r'^register$', views.register),
     url(r'^preferences/(?P<id>\d+)$', views.preferences),
     url(r'^main$', views.main),
+    url(r'^wildrecord$', views.wildrecord),
+    url(r'^record$', views.record),
 ]
