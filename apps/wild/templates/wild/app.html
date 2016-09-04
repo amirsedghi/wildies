@@ -65,6 +65,10 @@
   </head>
   <body>
     <div class="wrapper">
+
+    <a href="/main">City Search</a>
+    <div class="app">
+
       <div class="content">
           <h2>{{response.name}}</h2>
           <div class="image">
@@ -73,20 +77,22 @@
           </div>
       </div>
       <div class="choice">
-        <div class="no">
         <form class="" action="/getresults/{{num}}" method="post">
           {%csrf_token%}
           <input type="hidden" name="city" value="{{city}}">
           <!-- NO BUTTON -->
+
           <button class="btn-floating teal accent-3" type="submit" name="action"><i class="large material-icons">highlight_off</i></button>
         </form>
-      </div>
-      <div class="yes">
-        <!-- YES BUTTON! -->
-        <button class="btn-floating teal accent-3" type="submit" name="action"><i class="large material-icons">check_circle</i></button>
+        <form class="" action="/accepted" method="post">
+          {%csrf_token%}
+          <input type="hidden" name="url" value="{{response.url}}">
+          <input type="hidden" name="name" value="{{response.name}}">
+          <button class="btn-floating teal accent-3" type="submit" name="action"><i class="large material-icons">check_circle</i></button>
+        </form>
       </div>
     </div>
-      <a id="histoy" class="waves-effect waves-light btn teal accent-3">Your List</a>
-    </div>
+  </div>  
+
   </body>
 </html>

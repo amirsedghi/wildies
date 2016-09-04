@@ -56,32 +56,74 @@ def loginreg(request):
 def main(request):
     the_user = User.objects.get(id = request.session['id'])
     if the_user:
-
+        if 'city' in request.session:
+            del request.session['city']
+            del request.session['life_style']
+            del request.session['rating']
+            del request.session['i_am']
+            del request.session['popularity']
         context = {'user': the_user}
         return render(request, 'wild/main.html', context)
     else:
         return redirect('/loginreg')
 
 def results(request,num):
+    if not 'city' in request.session:
+        request.session['city'] = request.POST['city']
+        request.session['life_style']=request.POST['life_style']
+        request.session['rating']=request.POST['rating']
+        request.session['i_am']=request.POST['i_am']
+        request.session['popularity']=request.POST['popularity']
+    if request.session['popularity']=='high':
+        popularity = 100
+    elif request.session['popularity']=='medium':
+        popularity = 50
+    else:
+        popularity = 0
+
+    if request.session['i_am']=='classy':
+        alchohol = ',beer_and_wine'
+    elif request.session['i_am']=='mess':
+        alchohol = ',bars'
+    else:
+        alchohol = ''
+    print
     params = {
         'term': 'food',
-        'category_filter': 'vegan',
+        'category_filter':request.session['life_style']+alchohol,
+        'rating':request.session['rating'],
+        'review_count':popularity,
     }
-    response = client.search(request.POST['city'], **params)
+    response = client.search(request.session['city'], **params)
     print '**************'
     for i in range(0, 20):
         print response.businesses[i].name
+        print '%%%%%%%%%%%%%%%%%%'
+        print response.businesses[i].url
     print len(response.businesses)
     if int(num)==20:
         num=0
     context = {
         'response':response.businesses[int(num)],
         'num': int(num)+1,
-        'city':request.POST['city'],
     }
     # result = JsonResponse(response, safe=False)
     return render(request,'wild/app.html', context)
 
+def accepted(request):
+    UserPlace.objects.create(user=User.objects.get(id=request.session['id']), place_url=request.POST['url'], name=request.POST['name'])
+    return redirect('/list')
+
+def logout(request):
+    del request.session['id']
+    return redirect('/')
+
+def list(request):
+    joined=UserPlace.objects.filter(user=User.objects.get(id=request.session['id']))
+    context = {
+        'joined':joined,
+    }
+    return render(request, 'wild/list.html', context)
 
 def preferences(request, id):
     return render(request, 'wild/preferences.html')
@@ -91,5 +133,5 @@ def record(request):
     return redirect('/main')
 
 def wildrecord(request):
-    the_user = User.objects.filter(id = request.session['id']).update(life_style = request.POST['life_style'], i_am = request.POST['alcohol'])
+    the_user = User.objects.filter(id = request.session['id']).update(life_style = request.POST['life_style'], i_am = request.POST['alcohol'], rating = '1', popularity = '0')
     return redirect('/main')

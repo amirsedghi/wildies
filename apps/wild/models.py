@@ -67,6 +67,7 @@ class User(models.Model):
 
 class UserPlace(models.Model):
     user = models.ForeignKey(User, related_name= 'place_user')
-    place_id = models.IntegerField()
+    place_url = models.CharField(max_length=200, default='')
+    name = models.CharField(max_length=200, default='')
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
