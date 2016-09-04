@@ -3,22 +3,90 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    {% load staticfiles %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src='{% static 'wild/js/preferences.js' %}'></script>
+    <style media="screen">
+      .wrapper{
+        margin: auto;
+        width: 500px;
+        height: 900px;
+        border: 1px solid black;
+      }
+
+      .photo{
+        width: 400px;
+        height: 400px;
+        margin:auto;
+      }
+      .image{
+        width: 500px;
+        height: 500px;
+        border: 1px solid black;
+      }
+
+      .content h2{
+        color: #00796b;
+      }
+
+      .photo{
+        margin-left: 50px;
+      }
+
+      .rating{
+        margin-left: 200px;
+      }
+      .no{
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+      }
+      .choice{
+        width: 110px;
+        height: 50px;
+        border: 1px solid black;
+        margin: auto;
+      }
+
+      .yes{
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+
+      }
+
+    </style>
   </head>
   <body>
-    <div class="app">
+    <div class="wrapper">
       <div class="content">
-        {{response.name}}
-        <img src="{{response.image_url}}" alt="" />
-        <img src="{{response.rating_img_url}}" alt="" />
+          <h2>{{response.name}}</h2>
+          <div class="image">
+                <img class="photo "src="{{response.image_url}}"/>
+                <img class="rating"src="{{response.rating_img_url}}"/>
+          </div>
       </div>
       <div class="choice">
+        <div class="no">
         <form class="" action="/getresults/{{num}}" method="post">
           {%csrf_token%}
           <input type="hidden" name="city" value="{{city}}">
-          <button type="submit" name="button">No</button>
+          <!-- NO BUTTON -->
+          <button class="btn-floating teal accent-3" type="submit" name="action"><i class="large material-icons">highlight_off</i></button>
         </form>
-        <h3>yes</h3>
       </div>
+      <div class="yes">
+        <!-- YES BUTTON! -->
+        <button class="btn-floating teal accent-3" type="submit" name="action"><i class="large material-icons">check_circle</i></button>
+      </div>
+    </div>
+      <a id="histoy" class="waves-effect waves-light btn teal accent-3">Your List</a>
     </div>
   </body>
 </html>
