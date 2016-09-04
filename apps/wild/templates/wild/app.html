@@ -5,6 +5,7 @@
     <title></title>
   </head>
   <body>
+    <a href="/main">City Search</a>
     <div class="app">
       <div class="content">
         {{response.name}}
@@ -14,10 +15,14 @@
       <div class="choice">
         <form class="" action="/getresults/{{num}}" method="post">
           {%csrf_token%}
-          <input type="hidden" name="city" value="{{city}}">
           <button type="submit" name="button">No</button>
         </form>
-        <h3>yes</h3>
+        <form class="" action="/accepted" method="post">
+          {%csrf_token%}
+          <input type="hidden" name="url" value="{{response.url}}">
+          <input type="hidden" name="name" value="{{response.name}}">
+          <button type="submit" name="button">Yes</button>
+        </form>
       </div>
     </div>
   </body>

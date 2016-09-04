@@ -11,4 +11,7 @@ urlpatterns = [
     url(r'^wildrecord$', views.wildrecord),
     url(r'^record$', views.record),
     url(r'^getresults/(?P<num>\d+)$', views.results),
+    url(r'^accepted$', views.accepted),
+    url(r'^list$', views.list),
+    url(r'^logout$',views.list),
 ]

@@ -10,6 +10,8 @@
     <script type="text/javascript" src='{% static 'wild/js/main.js' %}'></script>
   </head>
   <body>
+    <a href="/logout">Logout</a>
+    <a href="/preferences/{{request.session.id}}">Edit Preferences</a>
     <form class="" action="/getresults/0" method="post">
       {%csrf_token%}
       <input type="hidden" name="life_style" value="{{user.life_style}}">
