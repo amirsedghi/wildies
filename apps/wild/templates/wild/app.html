@@ -40,6 +40,7 @@
 
       h4{
         color: #1de9b6;
+        margin-left: 5%;
       }
       .image{
         width: 200px;
@@ -101,6 +102,10 @@
         height: 30px;
         float: right;
       }
+      .content p{
+        color: #1de9b6;
+        padding:10px;
+      }
 
 
     </style>
@@ -123,6 +128,9 @@
           <div class="image">
                 <img class="photo "src="{{response.image_url}}"/>
           </div>
+          <p>
+            {{response.snippet_text}}
+          </p>
       </div>
       <div class="choice">
         <div class="no">
