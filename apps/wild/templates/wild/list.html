@@ -3,29 +3,89 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    {% load staticfiles %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src='{% static 'wild/js/preferences.js' %}'></script>
+    <style media="screen">
+    body{
+      background-image: url('https://hd.unsplash.com/photo-1471110338536-858caa3dbe45');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      -webkit-background-size: cover;
+       -moz-background-size: cover;
+       -o-background-size: cover;
+       background-size: cover;
+       color: #1de9b6;
+
+    }
+
+    .wrapper{
+      width: 500px;
+      margin: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+      border: 1px solid black;
+    }
+    .nav{
+      width: 500px;
+      height: 45px;
+    }
+      a{
+        color: #1de9b6;
+      }
+
+      a:hover{
+        color: orange;
+      }
+
+    .location{
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+
+    }
+    .logout{
+      width: 30px;
+      height: 30px;
+      float: right;
+    }
+
+
+    </style>
   </head>
   <body>
-    <a href="/logout">Logout</a>
-    <a href="/main">Search again!</a>
+    <div class="wrapper">
+      <div class="nav">
+          <div class="location">
+            <a href="/main"><i class="material-icons">airplanemode_active</i></a>
+          </div>
+          <div class="logout">
+              <a href="/logout"><i class="material-icons">power_settings_new</i></a>
+          </div>
+      </div>
     <table>
-      <tr>
-        <th>
-          Name
-        </th>
-        <th>
-          Yelp Link
-        </th>
+      <thead>
+        <tr>
+
+        <th>Name</th>
+        <th>Yelp Link</th>
       </tr>
+    </thead>
       {%for j in joined%}
+      <tbody>
+
       <tr>
-        <td>
-          {{j.name}}
-        </td>
-        <td>
-          <a href="{{j.place_url}}">Visit Me!</a>
-        </td>
+        <td>{{j.name}}</td>
+        <td><a href="{{j.place_url}}">Visit Me!</a></td>
       </tr>
+    </tbody>
       {%endfor%}
     </table>
+  </div>
   </body>
 </html>

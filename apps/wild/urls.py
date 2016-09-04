@@ -13,5 +13,5 @@ urlpatterns = [
     url(r'^getresults/(?P<num>\d+)$', views.results),
     url(r'^accepted$', views.accepted),
     url(r'^list$', views.list),
-    url(r'^logout$',views.list),
+    url(r'^logout$',views.logout),
 ]

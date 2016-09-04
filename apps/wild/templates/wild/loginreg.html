@@ -13,11 +13,27 @@
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
   <style media="screen">
-    body{
-      width:500px;
-      border: 1px solid black;
-      margin:auto;
+  body{
+    background-image: url('https://hd.unsplash.com/photo-1471110338536-858caa3dbe45');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+     -moz-background-size: cover;
+     -o-background-size: cover;
+     background-size: cover;
+     color: #1de9b6;
+
+  }
+
+  h1{
+    color: #1de9b6;
+  }
+    .wrapper{
+      width: 500px;
+      margin: auto;
       padding: 9px;
+      background-color: rgba(0, 0, 0, 0.8);
+      border: 1px solid black;
     }
     p{
       font-size:10px;
@@ -32,6 +48,8 @@
   </style>
   </head>
   <body>
+    <div class="wrapper">
+
     <h1>Registration</h1>
     <form class="w3-container" action="/register" method="post">
       {% csrf_token %}
@@ -52,5 +70,6 @@
         Password: <input type="password" name="loginpass" value="">
         <button class="waves-effect waves-light btn teal accent-3"type="submit" name="Submit" value="Login">Login</button>
     </form>
+  </div>
   </body>
 </html>

@@ -13,14 +13,34 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript" src='{% static 'wild/js/preferences.js' %}'></script>
     <style media="screen">
-      body{
-        margin: auto;
-        width: 400px;
-      }
+    body{
+      background-image: url('https://hd.unsplash.com/photo-1471110338536-858caa3dbe45');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      -webkit-background-size: cover;
+       -moz-background-size: cover;
+       -o-background-size: cover;
+       background-size: cover;
+       color: #1de9b6;
+
+    }
+    .wrapper{
+      width: 500px;
+      margin: auto;
+      padding: 9px;
+      background-color: rgba(0, 0, 0, 0.8);
+      border: 1px solid black;
+    }
+
+    .browser-default{
+      background-color: black;
+    }
 
     </style>
   </head>
   <body>
+    <div class="wrapper">
+
     <div>
       <h4>Feeling Wild:</h4>
     <div class="wild">
@@ -74,5 +94,6 @@
       </form>
       </div>
     </div>
+  </div>
   </body>
 </html>
